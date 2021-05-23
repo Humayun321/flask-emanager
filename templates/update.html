@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block body %}
+ <!-- Form  -->
+
+ <div class="container  my-3">
+    
+    <form action="/update/{{record.sno}}" method="POST">
+      <div class="mb-2">
+        <label for="InputDescription" class="form-label">Update details</label>
+        <input type="text" class="form-control" name="desc" value="{{record.descr}}" id="exampleInputDescription"
+          aria-describedby="Description" />
+
+        <div class="mb-2"></div>
+        <label for="InputCost" class="form-label">Amount(in Rs.)</label>
+        <input type="number" class="form-control" name="amnt" value="{{record.amount}}" id="InputCost" />
+      </div>
+
+      <div class="mb-3">
+        <label for="InputTags" class="form-label">Choose a category</label>
+        <input type="text" class="form-control" name="tags" value="{{record.category}}" id="InputCategory" />
+      </div>
+
+      <script>
+        $('#InputCategory').tokenfield({
+          autocomplete: {
+            source: ['Foods & Drinks', 'Shopping', 'Transportation', 'Communication & PC', 'Financial Expense ', 'Education', 'Life & Entertainment', 'Healthcare & Medical',],
+            delay: 100
+          },
+          showAutocompleteOnFocus: true
+        });
+      </script>
+
+<button type="submit" class="btn btn-dark">Submit</button>
+</form>
+</div>
+{% endblock body %}
